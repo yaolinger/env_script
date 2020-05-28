@@ -1,0 +1,35 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# 生成配置 integration_server.conf
+# 用于程序启动搜索第三方动态库目录
+
+import os, sys, argparse
+
+#输入参数
+parser = argparse.ArgumentParser(description='Auto build integration_server.conf')
+parser.add_argument("--third_dir", type=str)
+
+args = parser.parse_args()
+
+thirdDir = args.third_dir
+
+if thirdDir is None:
+    print "--third_dir is None"
+    sys.exit()
+
+#第三方目录检测
+if os.path.exists(thirdDir) == False:
+    print thirdDir, "not exists"
+    sys.exit()
+
+
+fileData = '''# Integration server conf
+'''
+def outFile():
+	output = open("integration_server.conf", 'w')
+        output.write(fileData)
+        output.write(thirdDir)
+        output.close()
+
+outFile();
