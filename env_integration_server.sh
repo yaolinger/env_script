@@ -3,12 +3,18 @@
 PROJECT_NAME=integration_server
 OUT_RES_DIR=./integration_server
 PROJECT_THIRD_DIR=/usr/$PROJECT_NAME\_third
+PROJECT_THIRD_DIR_BIN=$PROJECT_THIRD_DIR/bin
+PROJECT_THIRD_DIR_INCLUDE=$PROJECT_THIRD_DIR/include
+PROJECT_THIRD_DIR_LIB=$PROJECT_THIRD_DIR/lib
 
 #构建资源目录
 mkdir $OUT_RES_DIR
 
 #构建第三方目录
 mkdir $PROJECT_THIRD_DIR
+mkdir $PROJECT_THIRD_DIR_BIN
+mkdir $PROJECT_THIRD_DIR_INCLUDE
+mkdir $PROJECT_THIRD_DIR_LIB
 
 #解压boost
 tar -zxvf ./res/boost_1_67_0.tar.gz -C $OUT_RES_DIR
@@ -27,7 +33,7 @@ unzip ./res/protobuf-master.zip -d $OUT_RES_DIR
 cd $OUT_RES_DIR/protobuf-master
 ./autogen.sh
 ./configure --prefix=$PROJECT_THIRD_DIR
-make
+make -j2
 sudo make install
 sudo ldconfig
 cd -
