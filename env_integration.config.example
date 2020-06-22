@@ -1,0 +1,6 @@
+## env_integration_server.sh 所需参数
+## 参数模板根据个人环境填写
+
+## 工作目录
+WORK_DIR=../cpp_server
+

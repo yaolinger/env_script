@@ -1,5 +1,13 @@
 #! /bin/bash
 
+if [ ! -e  "./env_integration.config" ]
+then
+    echo "env_integration.config not exist."
+    exit 1
+fi
+
+. ./env_integration.config
+
 PROJECT_NAME=integration_server
 OUT_RES_DIR=./integration_server
 PROJECT_THIRD_DIR=/usr/$PROJECT_NAME\_third
@@ -44,3 +52,5 @@ python gen_integration_server_conf.python --third_dir=$PROJECT_THIRD_DIR/lib
 mv integration_server.conf /etc/ld.so.conf.d/integration_server.conf
 sudo ldconfig
 
+## 拷贝第三方脚本至工作目录
+bash copy_script.sh $OUT_RES_DIR $WORK_DIR
