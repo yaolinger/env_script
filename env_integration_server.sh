@@ -53,4 +53,7 @@ mv integration_server.conf /etc/ld.so.conf.d/integration_server.conf
 sudo ldconfig
 
 ## 拷贝第三方脚本至工作目录
+
+## protobuf 目前使用第三方的protoc脚本来生成代码
+## protoc进程在$PROJECT_THIRD_DIR_BIN目录, 也可采用protoc进程生成代码
 bash copy_script.sh $OUT_RES_DIR $WORK_DIR
