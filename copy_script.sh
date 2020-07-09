@@ -13,7 +13,3 @@ PROTO_DIR=$1/protobuf-master
 ## 工作目录
 WORK_DIR=$2
 
-## 拷贝脚本
-echo "cp $PROTO_DIR/src/protoc $2/proto/protos/protoc"
-cp $PROTO_DIR/src/protoc $2/proto/protos/protoc
-
