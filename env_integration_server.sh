@@ -42,8 +42,19 @@ cd $OUT_RES_DIR/protobuf-master
 ./autogen.sh
 ./configure --prefix=$PROJECT_THIRD_DIR
 make -j2
-sudo make install
-sudo ldconfig
+make install
+cd -
+
+#libzdb 依赖于数据库api库 目前使用mysql(暂时使用apt安装)
+apt install libmysqlclient-dev
+
+#解压zdb
+tar -zxvf ./res/libzdb-3.1.tar.gz -C $OUT_RES_DIR
+#指定目录并安装zdb
+cd $OUT_RES_DIR/libzdb-3.1
+./configure --prefix=$PROJECT_THIRD_DIR
+make -j2
+make install
 cd -
 
 #生成运行配置(动态库搜索目录)
