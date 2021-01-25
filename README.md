@@ -1,5 +1,5 @@
 # env_script
-内含第三方包及自动化部署脚本  
+环境部署脚本
 脚本执行顺序  
 * bash res/pull_res.sh  
 * cp env_integration.config.example env_integration.config 并修改所需参数  
